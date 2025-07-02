@@ -1,0 +1,166 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("/resources/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #d8efd3;
+}
+
+#carousel {
+  height: 30em;
+  margin-bottom: 1em;
+}
+
+.carousel-item img {
+  height: 30em;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  color: black;
+}
+
+.block-1 a {
+  color: black;
+  text-decoration: none;
+}
+
+.block-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 15em;
+  justify-content: center;
+  border: 2px solid white;
+  margin: 1em;
+  padding: 1em;
+  background-color: white;
+}
+
+.container-1,
+.container-2 {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 1.5em; /* Space between cards */
+  padding-bottom: 1.5em; /* Space below the cards */
+  overflow: hidden; /* Disables horizontal scrolling */
+  position: relative; /* For positioning buttons */
+}
+
+.card {
+  display: inline-block;
+  width: 13em;
+  height: 20em;
+  margin: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-shrink: 0; /* Prevents shrinking */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.block-2 {
+  background-color: white;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-bottom: 1em;
+  width: calc(100% - 2em); /* Adjust width based on margins */
+  position: relative; /* To position the buttons inside */
+}
+
+.block-2 h2 {
+  padding-top: 1em;
+  margin-left: 1.5em;
+  font-size: 1.5em;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+#btnLeftContainer1,
+#btnRightContainer1,
+#btnLeftContainer2,
+#btnRightContainer2 {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  font-size: 2em;
+  padding: 10px;
+  background-color: rgba(0, 123, 255, 0.8);
+  color: white;
+  border-radius: 50%;
+}
+
+#btnLeftContainer1 {
+  left: 10px;
+}
+
+#btnRightContainer1 {
+  right: 10px;
+}
+
+#btnLeftContainer2 {
+  left: 10px;
+}
+
+#btnRightContainer2 {
+  right: 10px;
+}
+
+/* Ensure responsiveness for small screens */
+@media (max-width: 768px) {
+  .block-1 {
+    flex-direction: column;
+    gap: 2em;
+    margin: 0.5em;
+  }
+
+  .container-1,
+  .container-2 {
+    flex-direction: column;
+    gap: 1.5em;
+    margin: 0;
+    padding-left: 0;
+    overflow-x: hidden; /* Disables horizontal scrolling on mobile */
+  }
+
+  .card {
+    width: 80%;
+    margin: 0.5em;
+  }
+
+  .block-2 h2 {
+    font-size: 1.2em;
+  }
+
+  #btnLeftContainer1,
+  #btnRightContainer1,
+  #btnLeftContainer2,
+  #btnRightContainer2 {
+    font-size: 1.5em;
+    padding: 8px;
+  }
+}

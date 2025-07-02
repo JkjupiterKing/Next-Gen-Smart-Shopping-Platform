@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar"
+        style="background-color: #577b8d; color: white"
+      >
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <a
+              id="homeButton"
+              class="navbar-brand text-light"
+              href="/app/index.html"
+              style="margin-right: 2em"
+            >
+              <img
+                src="/resources/image/online-shopping.png"
+                alt="icon"
+                style="width: 3em; margin-bottom: 1em"
+              />
+              <b style="font-size: 1.5em">E-commerce</b>
+            </a>
+            <form class="d-flex" role="search" style="width: 25em; height: 3em">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search products"
+                aria-label="Search"
+              />
+              <button
+                class="btn"
+                type="submit"
+                id="searchbtn"
+                style="background-color: #ffdb5c; color: black; font-size: 1em"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul
+              class="navbar-nav me-auto mb-2 mb-lg-0"
+              style="margin-left: 0; font-size: 1em"
+            >
+              <li class="nav-item" style="margin-left: 0.5em">
+                <a
+                  id="CartButton"
+                  class="nav-link text-light"
+                  href="/app/components/MyOrders/MyOrders.html"
+                >
+                  <img
+                    src="/resources/image/order.png"
+                    alt="Myorders-icon"
+                    style="width: 1.5em; margin-left: 2em"
+                  />
+                  <b>My Orders</b>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  id="cartButton"
+                  class="nav-link text-light"
+                  href="/app/components/cart/cart.html"
+                >
+                  <img
+                    src="/resources/image/shopping-cart.png"
+                    alt="cart-icon"
+                    style="width: 1.5em; margin-left: 0.5em"
+                  />
+                  <b>Cart</b>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  id="userprofile"
+                  class="nav-link text-light"
+                  href="/app/components/userProfile/userProfile.html"
+                >
+                  <img
+                    src="/resources/image/profile.png"
+                    alt="profile-icon"
+                    style="width: 1.5em; margin-left: 0.5em"
+                  />
+                  <b>Profile</b>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  id="logoutButton"
+                  class="nav-link text-light"
+                  href="/app/components/Login/login.html"
+                >
+                  <img
+                    src="/resources/image/logout.png"
+                    alt="Logout-icon"
+                    style="width: 1.5em; margin-left: 0.5em"
+                  />
+                  <b>Logout</b>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <script src="../header/header.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

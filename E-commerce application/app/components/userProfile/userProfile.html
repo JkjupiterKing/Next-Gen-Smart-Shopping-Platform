@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="../../../resources/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Profile</title>
+    <link rel="stylesheet" href="../userProfile/userProfile.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/../../resources/image/online-shopping.png"
+    />
+  </head>
+  <body>
+    <div class="page-content" id="page-content">
+      <div class="padding">
+        <div class="row container d-flex justify-content-center">
+          <div class="col-xl-10 col-md-15">
+            <div class="card user-card-full">
+              <div class="row m-l-0 m-r-0">
+                <div class="col-sm-4 bg-c-lite-green user-profile">
+                  <div class="card-block text-center text-white">
+                    <div class="m-b-5">
+                      <img
+                        src="/resources/image/profile.png"
+                        class="img-radius"
+                        alt="User-Profile-Image"
+                        style="width: 5em"
+                      />
+                    </div>
+                    <h3 class="f-w-600" id="userName">User</h3>
+                    <button class="btn btn-primary" id="updateButton">
+                      Update
+                    </button>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-block">
+                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Details</h6>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Email</p>
+                        <h6 class="text-muted f-w-400" id="userEmail">
+                          Email not set
+                        </h6>
+                      </div>
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Phone</p>
+                        <h6 class="text-muted f-w-400" id="userPhone">
+                          Phone not set
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Address</p>
+                        <h6 class="text-muted f-w-400" id="userAddress">
+                          Address not set
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Username</p>
+                        <h6 class="text-muted f-w-400" id="userUsername">
+                          Username not set
+                        </h6>
+                      </div>
+                      <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Password</p>
+                        <h6 class="text-muted f-w-400" id="userPassword">
+                          ******
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Update Modal -->
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="updateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">Update Profile</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="updateForm">
+              <div class="form-group">
+                <label for="updateUsername">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updateUsername"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="updateEmail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="updateEmail"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="updatePhone">Phone</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updatePhone"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="updateAddress">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="updateAddress"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="updatePassword">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="updatePassword"
+                  required
+                />
+              </div>
+              <br />
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="savechanges-btn"
+              >
+                Save changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../userProfile/userProfile.js"></script>
+  </body>
+</html>

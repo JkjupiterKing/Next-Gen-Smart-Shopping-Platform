@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("/resources/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #d8efd3;
+}
+
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px -16px;
+  justify-content: space-between; /* Ensure space between items */
+}
+
+.column {
+  flex: 1 1 30%; /* Default to 3 products per row, adjust if necessary */
+  margin: 8px;
+  display: flex;
+  justify-content: center; /* Center cards in their container */
+  align-items: stretch;
+  min-width: 200px; /* Minimum width for cards */
+  max-width: 33%; /* Ensure columns don't grow beyond 3 per row */
+}
+
+/* Adjust the width of columns dynamically */
+.row.single-column .column {
+  flex: 1 1 100%; /* Single product takes the entire width */
+}
+
+.row.two-column .column {
+  flex: 1 1 48%; /* Two products per row, taking almost half the row */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text1 {
+  font-size: 0.8em;
+}
+
+.card-img-top {
+  width: 80%; /* Ensure the image takes up the full width of its container */
+  height: 200px;
+  object-fit: cover; /* Ensure the image covers the area without distortion (cropping may occur) */
+  margin: 1em auto; /* Center the image horizontally */
+  display: block; /* Ensure the image is block-level and centers correctly */
+}
+
+.card-title {
+  font-size: 1.2em;
+}
+
+.card-text {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-text,
+.card-title {
+  margin-bottom: 10px;
+}
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #577b8d;
+  color: white;
+}
+.btn.btn-primary:hover {
+  color: #11235a;
+}
+.btn-primary {
+  background-color: #577b8d;
+  border-color: #577b8d;
+}
+.btn.btn-primary.addToCartButton {
+  width: 8em;
+  background-color: #577b8d;
+  color: white;
+  border-color: #577b8d;
+}
+.btn.btn-primary.addToCartButton:hover {
+  background-color: #d8efd3;
+  color: black;
+}
+#resultMessage {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3em;
+  text-align: left;
+  margin-top: 1em;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="/../resources/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sign-up.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/../../resources/image/online-shopping.png"
+    />
+    <title>Signup</title>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="d-flex align-items-center justify-content-center mb-4"
+        id="header"
+      >
+        <img src="/resources/image/online-shopping.png" alt="logo" id="logo" />
+        <h1 class="ms-3">E-commerce app</h1>
+      </div>
+      <br />
+      <div class="card mx-auto" style="max-width: 30rem">
+        <div class="card-body">
+          <h1 class="card-title text-center">Sign Up</h1>
+          <div id="form-container">
+            <div id="uname" class="mb-4">
+              <label for="username" class="form-label">Username:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                style="width: 100%"
+                required
+              />
+            </div>
+            <div id="Email" class="mb-4">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                style="width: 100%"
+                required
+              />
+            </div>
+            <div id="Mobile" class="mb-4">
+              <label for="mobile" class="form-label">Mobile Number:</label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                class="form-control"
+                style="width: 100%"
+                required
+              />
+            </div>
+            <div id="Address" class="mb-4">
+              <label for="address" class="form-label">Address:</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                class="form-control"
+                style="width: 100%"
+                required
+              />
+            </div>
+            <div id="passwd" class="mb-4">
+              <label for="password" class="form-label">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                style="width: 100%"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary d-block mx-auto"
+              id="submit"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a href="../login/login.html">Already have an account? Log in here!</a>
+    </div>
+    <br />
+  </body>
+  <script src="sign-up.js"></script>
+</html>

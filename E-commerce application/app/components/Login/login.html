@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/../../resources/image/online-shopping.png"
+    />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-1" id="header">
+        <img
+          src="/resources/image/online-shopping.png"
+          alt="logo"
+          id="logo"
+          class="fade-in"
+        />
+        <h3 class="fade-in" style="margin-top: 0.5em">
+          Next-Gen-Smart-Shopping
+        </h3>
+      </div>
+      <br />
+      <div class="card mx-auto slide-in" style="max-width: 30rem" id="card">
+        <div class="card-body">
+          <br />
+          <div id="form-container">
+            <div id="uname" class="mb-4">
+              <label for="username" class="form-label">Email-Id</label>
+              <input
+                type="text"
+                id="Email"
+                name="username"
+                class="form-control"
+                style="width: 100%"
+              />
+            </div>
+            <div id="passwd" class="mb-4">
+              <label for="password" class="form-label">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                style="width: 100%"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary d-block mx-auto"
+              id="submit"
+            >
+              Login
+            </button>
+            <br />
+            <a
+              class="forgot-password-link"
+              data-toggle="modal"
+              data-target="#forgotPasswordModal"
+              id="forgot-link"
+              >Forgot Password?</a
+            >
+            <br />
+            <br />
+            <!-- OTP Input for Login -->
+            <div id="otp-container" class="fade-in">
+              <div id="otp" class="mb-4">
+                <label for="otpInput" class="form-label">Enter OTP</label>
+                <input
+                  type="text"
+                  id="otpInput"
+                  class="form-control"
+                  style="width: 100%"
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                class="btn btn-success d-block mx-auto"
+                id="verifyOtpButton"
+              >
+                Verify OTP
+              </button>
+              <div id="otpMessage" style="color: red; text-align: center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a href="../sign-up/sign-up.html" id="sign-up"
+        >Join thousands of happy users - sign up today!</a
+      >
+    </div>
+    <br />
+
+    <!-- Forgot Password Modal -->
+    <div
+      class="modal fade"
+      id="forgotPasswordModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="forgotPasswordModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="forgotPasswordModalLabel">
+              Forgot Password
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form id="forgotPasswordForm">
+              <div class="form-group">
+                <label for="forgotEmailid">Enter your Email-Id</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="forgotUsername"
+                  required
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="newPassword">Enter your new password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newPassword"
+                  name="newPassword"
+                  required
+                />
+                <br />
+                <button
+                  type="submit"
+                  class="btn btn-primary d-block mx-auto"
+                  id="Sendotpbutton"
+                >
+                  Send OTP
+                </button>
+              </div>
+              <br />
+              <div id="forgotOtp-container" class="fade-in">
+                <label for="forgotOtpInput" class="form-label">Enter OTP</label>
+                <input
+                  type="text"
+                  id="forgotOtpInput"
+                  class="form-control"
+                  style="width: 100%"
+                />
+                <br />
+                <button
+                  type="button"
+                  class="btn btn-success btn-block"
+                  id="forgotVerifyOtpButton"
+                >
+                  Verify OTP
+                </button>
+                <div
+                  id="forgotOtpMessage"
+                  style="color: red; text-align: center"
+                ></div>
+              </div>
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../components/Login/login.js"></script>
+  <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+</html>

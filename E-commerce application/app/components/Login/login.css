@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("/resources/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #91c8e4;
+  color: black;
+}
+
+#h3 {
+  font-size: larger;
+  color: white;
+}
+
+#uname {
+  font-size: large;
+}
+
+#passwd {
+  font-size: large;
+}
+
+#forgot-link {
+  font-size: medium;
+  margin-left: 0;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 17em;
+  font-size: 1.2em;
+  color: black;
+}
+
+a:hover {
+  color: #ddd;
+}
+
+#logo {
+  width: 4em;
+}
+
+#card {
+  padding: 1em;
+  transition: transform 0.3s ease;
+  background-color: #91c8e4;
+  border: none;
+  color: black;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-left: 21em;
+  margin-top: 5em;
+}
+
+.btn {
+  background-color: #577b8d;
+  border-color: #577b8d;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#otp-container {
+  display: none;
+}
+
+#forgotOtp-container {
+  display: none;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

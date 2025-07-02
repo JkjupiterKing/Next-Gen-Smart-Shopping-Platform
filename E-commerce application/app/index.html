@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="../../resources/image/online-shopping.png">
+    <title>E-commerce app</title>
+</head>
+<body>
+    <div class="block-1">
+        <a href="./components/products/Products.html" aria-label="All Products">
+            <div>
+                <div>
+                    <div>
+                        <div style="width:64px;height:64px">
+                            <img alt="AllProducts" src="../../resources/image/box.png"
+                                style="width: 3.8em;margin-left: 1.2em;">
+                        </div>
+                    </div>
+                    <span><span><b>All Products</b></span></span>
+                </div>
+            </div>
+        </a>
+        <a href="./components/products/products.html?category=jewelery" aria-label="jewelery">
+            <div>
+                <div>
+                    <div>
+                        <div style="width:64px;height:64px">
+                            <img alt="jewelery" src="../../resources/image/jewelry.png" style="width: 4em;">
+                        </div>
+                    </div>
+                    <span><span><b>jewelery</b></span></span>
+                </div>
+            </div>
+        </a>
+        <a href="./components/products/products.html?category=Fashion" aria-label="Fashion">
+            <div>
+                <div>
+                    <div>
+                        <div style="width:64px;height:64px">
+                            <img class="_2puWtW _3a3qyb" alt="Grocery" src="../../resources/image/Fashion.png"
+                                style="width: 4em;">
+                        </div>
+                    </div>
+                    <span><span><b>Fashion</b></span></span>
+                </div>
+            </div>
+        </a>
+        <a href="./components/products/products.html?category=Electronics" aria-label="Electronics">
+            <div>
+                <div>
+                    <div>
+                        <div style="width:64px;height:64px">
+                            <img alt="Electronics" src="../../resources/image/Electronics.png"
+                                style="width: 4em;margin-left: 0.7em;">
+                        </div>
+                    </div>
+                    <span><span><b>Electronics</b></span></span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="../../resources/image/Home page image.jpg" class="d-block w-100" alt="Sale-image">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="../../resources/image/electronic products.jpg" class="d-block w-100" alt="Grocery-image">
+                <div class="carousel-caption"
+                    style="text-align: left; left: 5%; right: unset;font-size: 1.5em;color: white;">
+                    <h5><b>Electronic Products</b></h5>
+                    <p>Discover the latest gadgets.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="../../resources/image/Shopping.jpg" class="d-block w-100" alt="Shopping-image">
+                <div class="carousel-caption" style="text-align: left; left: 5%; right: unset;font-size: 2em;">
+                    <h3><b>Fashion clothing</b></h3>
+                    <p>Shop with convenience.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="block-2">
+        <h2 style="padding-top: 1em;margin-left: 1.5em;">Fashion collections</h2>
+        <div class="container-1">
+            <div class="card">
+                <img src="../../resources/image/image1.jpg" alt="Image 1" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">T-shirts</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image2.jpg" alt="Image 2" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Pants</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image4.jpg" alt="Image 3" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Girls wear</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image5.jpg" alt="Image 4" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Tops</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image3.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Girls shorts</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image6.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Women shorts</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image7.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Women's kurthis</h6>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+        <button id="btnLeftContainer1" class="btn btn-primary"><</button>
+        <button id="btnRightContainer1" class="btn btn-primary" style="margin-left: 75em;">></button>
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="block-2">
+        <h2 style="padding-top: 1em;margin-left: 1.5em;">Footwear collections</h2>
+        <div class="container-2">
+            <div class="card">
+                <img src="../../resources/image/image1_1.jpg" alt="Image 1" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Running shoes</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_2.jpg" alt="Image 2" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Sandals</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_3.jpg" alt="Image 3" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Formal Shoes</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_4.jpg" alt="Image 4" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Womens sandals</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_5.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">shoes</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_6.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Women heels</h6>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../../resources/image/image1_7.jpg" alt="Image 5" class="card-img-top" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-title">Walking shoes</h6>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+        <button id="btnLeftContainer2" class="btn btn-primary"><</button>
+        <button id="btnRightContainer2" class="btn btn-primary" style="margin-left: 75em;">></button>
+    </div>
+    </div>
+    </div>
+    <br>
+    <script type="module" src="./index.js"></script>
+    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
