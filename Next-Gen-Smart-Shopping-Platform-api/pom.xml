@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.</groupId>
-	<artifactId>E-commerce-application-api</artifactId>
+	<artifactId>Next-Gen-Smart-Shopping-Platform-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>E-commerce-application-api</name>
 	<description>Demo project for Spring Boot</description>
