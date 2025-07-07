@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Header</title>
+    <link rel="stylesheet" href="./header.css" />
   </head>
   <body>
     <header>
       <nav
         class="navbar navbar-expand-lg navbar"
-        style="background-color: #393e46; color: white"
+        style="background-color: #4b5d67; color: white"
       >
         <div class="container-fluid">
           <button
@@ -38,18 +39,38 @@
               />
               <b style="font-size: 1em; margin-left: 0.5em">Smart-Shopping</b>
             </a>
-            <form class="d-flex" role="search" style="width: 25em; height: 3em">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search products"
-                aria-label="Search"
-              />
+            <form
+              autocomplete="off"
+              class="d-flex"
+              role="search"
+              style="width: 25em; height: 3em"
+            >
+              <div
+                class="autocomplete"
+                style="width: 100%; position: relative; color: black"
+                id="autocomplete"
+              >
+                <input
+                  id="searchInput"
+                  class="form-control"
+                  type="search"
+                  name="search"
+                  placeholder="Search products"
+                  aria-label="Search"
+                />
+              </div>
               <button
                 class="btn"
                 type="submit"
                 id="searchbtn"
-                style="background-color: #ffdb5c; color: black; font-size: 1em"
+                style="
+                  background-color: #ffdb5c;
+                  color: black;
+                  font-size: 1em;
+                  margin-left: 0.5em;
+                  width: 5em;
+                  height: 2.4em;
+                "
               >
                 Search
               </button>
