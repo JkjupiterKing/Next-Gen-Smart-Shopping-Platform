@@ -10,28 +10,33 @@ export async function includeHeader(path) {
     document.body.prepend(headerElement);
 
     attachEventListeners();
+    initializeVoiceSearch();
   } catch (error) {
     console.error("Error including header:", error);
   }
 }
 
 function attachEventListeners() {
+  // Main navigation events
   const homeButton = document.getElementById("homeButton");
   if (homeButton) {
-    homeButton.addEventListener("click", () => {
+    homeButton.addEventListener("click", (e) => {
+      e.preventDefault();
       window.location.href = "../../index.html";
     });
   }
 
+  // User profile display
   const userProfileLink = document.getElementById("userprofile");
   const username = localStorage.getItem("username");
   if (userProfileLink && username) {
     userProfileLink.innerHTML = `
       <img src="/resources/image/profile.png" alt="user-icon" style="width: 2em; margin-left: 0.5em" />
-      <b style="margin-left: 0.5em; margin-top: 0.7em">${username}</b>
+      <b style="margin-left: 0.5em">${username}</b>
     `;
   }
 
+  // Search form handling
   const searchForm = document.querySelector("form[role='search']");
   if (searchForm) {
     searchForm.addEventListener("submit", function (event) {
@@ -47,6 +52,7 @@ function attachEventListeners() {
     });
   }
 
+  // Autocomplete functionality
   const products = [
     "John Hardy Women's Gold & Silver Dragon Station Chain Bracelet",
     "Solid Gold Petite Micropave",
@@ -113,8 +119,104 @@ function attachEventListeners() {
   autocomplete(document.getElementById("searchInput"), products);
 }
 
+function initializeVoiceSearch() {
+  const voiceSearchBtn = document.getElementById("voiceSearchBtn");
+  const searchInput = document.getElementById("searchInput");
+  const statusIndicator = document.createElement("div");
+  statusIndicator.style.position = "absolute";
+  statusIndicator.style.right = "100px";
+  statusIndicator.style.top = "50%";
+  statusIndicator.style.transform = "translateY(-50%)";
+  statusIndicator.style.width = "10px";
+  statusIndicator.style.height = "10px";
+  statusIndicator.style.borderRadius = "50%";
+  statusIndicator.style.backgroundColor = "transparent";
+  statusIndicator.style.transition = "background-color 0.3s";
+  document.querySelector(".autocomplete").appendChild(statusIndicator);
+
+  if (
+    !("webkitSpeechRecognition" in window) &&
+    !("SpeechRecognition" in window)
+  ) {
+    voiceSearchBtn.disabled = true;
+    voiceSearchBtn.title = "Voice search not supported in your browser";
+    return;
+  }
+
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  recognition.lang = "en-US";
+
+  voiceSearchBtn.addEventListener("click", () => {
+    try {
+      if (voiceSearchBtn.classList.contains("listening")) {
+        recognition.stop();
+        voiceSearchBtn.classList.remove("listening");
+        statusIndicator.style.backgroundColor = "transparent";
+        voiceSearchBtn.innerHTML = "🎤";
+      } else {
+        recognition.start();
+        voiceSearchBtn.classList.add("listening");
+        statusIndicator.style.backgroundColor = "red";
+        voiceSearchBtn.innerHTML = "◼";
+        searchInput.placeholder = "Listening...";
+      }
+    } catch (err) {
+      console.error("Voice search error:", err);
+      statusIndicator.style.backgroundColor = "transparent";
+      voiceSearchBtn.innerHTML = "🎤";
+      searchInput.placeholder = "Search products";
+      alert(
+        "Error activating voice search. Please ensure microphone permissions are granted."
+      );
+    }
+  });
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    searchInput.value = transcript;
+    statusIndicator.style.backgroundColor = "transparent";
+    voiceSearchBtn.classList.remove("listening");
+    voiceSearchBtn.innerHTML = "🎤";
+    searchInput.placeholder = "Search products";
+
+    // Trigger search
+    const searchEvent = new Event("submit", { bubbles: true });
+    document.querySelector("form[role='search']").dispatchEvent(searchEvent);
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Speech recognition error:", event.error);
+    statusIndicator.style.backgroundColor = "transparent";
+    voiceSearchBtn.classList.remove("listening");
+    voiceSearchBtn.innerHTML = "🎤";
+    searchInput.placeholder = "Search products";
+
+    if (event.error === "no-speech") {
+      searchInput.placeholder = "No speech detected";
+    } else if (event.error === "audio-capture") {
+      alert("Microphone not available. Please check your microphone settings.");
+    }
+  };
+
+  recognition.onend = () => {
+    if (voiceSearchBtn.classList.contains("listening")) {
+      statusIndicator.style.backgroundColor = "transparent";
+      voiceSearchBtn.classList.remove("listening");
+      voiceSearchBtn.innerHTML = "🎤";
+      searchInput.placeholder = "Search products";
+    }
+  };
+}
+
+// Autocomplete function remains largely the same but with some improvements
 function autocomplete(inp, arr) {
   let currentFocus;
+  let activeItemIndex = -1;
 
   inp.addEventListener("input", function () {
     let val = this.value;
@@ -128,50 +230,66 @@ function autocomplete(inp, arr) {
     list.setAttribute("class", "autocomplete-items");
     container.appendChild(list);
 
-    arr.forEach((item) => {
-      if (item.toLowerCase().startsWith(val.toLowerCase())) {
-        const itemDiv = document.createElement("div");
-        itemDiv.innerHTML = `<strong>${item.substr(
-          0,
-          val.length
-        )}</strong>${item.substr(val.length)}`;
-        itemDiv.innerHTML += `<input type='hidden' value='${item}'>`;
+    const matches = arr
+      .filter((item) => item.toLowerCase().includes(val.toLowerCase()))
+      .slice(0, 5); // Limit to 5 suggestions
 
-        itemDiv.addEventListener("click", function () {
-          inp.value = this.getElementsByTagName("input")[0].value;
-          closeAllLists();
-        });
+    matches.forEach((item, index) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.innerHTML = `<strong>${item.substr(
+        0,
+        val.length
+      )}</strong>${item.substr(val.length)}`;
+      itemDiv.innerHTML += `<input type='hidden' value='${item}'>`;
+      itemDiv.setAttribute("data-index", index);
 
-        list.appendChild(itemDiv);
-      }
+      itemDiv.addEventListener("click", function () {
+        inp.value = this.getElementsByTagName("input")[0].value;
+        closeAllLists();
+        inp.focus();
+      });
+
+      list.appendChild(itemDiv);
     });
   });
 
   inp.addEventListener("keydown", function (e) {
     let x = document.getElementById(this.id + "-autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
-    if (e.keyCode == 40) {
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
       currentFocus++;
       addActive(x);
-    } else if (e.keyCode == 38) {
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
       currentFocus--;
       addActive(x);
-    } else if (e.keyCode == 13) {
+    } else if (e.key === "Enter") {
       e.preventDefault();
-      if (currentFocus > -1 && x) x[currentFocus].click();
+      if (currentFocus > -1 && x) {
+        x[currentFocus].click();
+      }
+    } else if (e.key === "Escape") {
+      closeAllLists();
     }
   });
 
   function addActive(x) {
     if (!x) return false;
     removeActive(x);
+
     if (currentFocus >= x.length) currentFocus = 0;
     if (currentFocus < 0) currentFocus = x.length - 1;
+
     x[currentFocus].classList.add("autocomplete-active");
+    activeItemIndex = currentFocus;
   }
 
   function removeActive(x) {
-    Array.from(x).forEach((el) => el.classList.remove("autocomplete-active"));
+    Array.from(x || []).forEach((el) =>
+      el.classList.remove("autocomplete-active")
+    );
   }
 
   function closeAllLists(elmnt) {
@@ -183,7 +301,7 @@ function autocomplete(inp, arr) {
     });
   }
 
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", (e) => {
     closeAllLists(e.target);
   });
 }

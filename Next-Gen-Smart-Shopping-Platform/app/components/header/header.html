@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Header</title>
     <link rel="stylesheet" href="./header.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .autocomplete-items div:hover,
+      .autocomplete-active {
+        background-color: #e9e9e9;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -57,10 +86,11 @@
                   name="search"
                   placeholder="Search products"
                   aria-label="Search"
+                  style="padding-right: 40px"
                 />
               </div>
               <button
-                class="btn"
+                class="btn search-btn"
                 type="submit"
                 id="searchbtn"
                 style="
@@ -73,6 +103,25 @@
                 "
               >
                 Search
+              </button>
+              <button
+                id="voiceSearchBtn"
+                type="button"
+                class="voice-search-btn"
+                aria-label="Voice Search"
+                style="
+                  width: 2em;
+                  background-color: #4b5d67;
+                  border: none;
+                  margin-left: 1em;
+                  margin-bottom: 0.4em;
+                "
+              >
+                <img
+                  src="/resources/image/voice.png"
+                  alt="voice-btn"
+                  style="width: 2.5em"
+                />
               </button>
             </form>
           </div>

@@ -9,3 +9,12 @@ input[type="text"] {
   background-color: #f1f1f1;
   width: 100%;
 }
+
+.search-btn {
+  background-color: #ffdb5c;
+  color: black;
+  font-size: 1em;
+  margin-left: 0.5em;
+  width: 5em;
+  height: 2.4em;
+}
