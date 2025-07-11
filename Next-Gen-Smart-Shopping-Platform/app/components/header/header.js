@@ -123,6 +123,8 @@ function initializeVoiceSearch() {
   const voiceSearchBtn = document.getElementById("voiceSearchBtn");
   const searchInput = document.getElementById("searchInput");
   const statusIndicator = document.createElement("div");
+  const micIconHTML = `<img src="/resources/image/voice.png" alt="voice-btn" style="width: 2.5em" />`;
+
   statusIndicator.style.position = "absolute";
   statusIndicator.style.right = "100px";
   statusIndicator.style.top = "50%";
@@ -157,18 +159,20 @@ function initializeVoiceSearch() {
         recognition.stop();
         voiceSearchBtn.classList.remove("listening");
         statusIndicator.style.backgroundColor = "transparent";
-        voiceSearchBtn.innerHTML = "🎤";
+        voiceSearchBtn.innerHTML = micIconHTML;
+        searchInput.placeholder = "Search products";
       } else {
         recognition.start();
         voiceSearchBtn.classList.add("listening");
         statusIndicator.style.backgroundColor = "red";
-        voiceSearchBtn.innerHTML = "◼";
+        voiceSearchBtn.innerHTML = micIconHTML;
         searchInput.placeholder = "Listening...";
       }
     } catch (err) {
       console.error("Voice search error:", err);
       statusIndicator.style.backgroundColor = "transparent";
-      voiceSearchBtn.innerHTML = "🎤";
+      voiceSearchBtn.classList.remove("listening");
+      voiceSearchBtn.innerHTML = micIconHTML;
       searchInput.placeholder = "Search products";
       alert(
         "Error activating voice search. Please ensure microphone permissions are granted."
@@ -181,10 +185,10 @@ function initializeVoiceSearch() {
     searchInput.value = transcript;
     statusIndicator.style.backgroundColor = "transparent";
     voiceSearchBtn.classList.remove("listening");
-    voiceSearchBtn.innerHTML = "🎤";
+    voiceSearchBtn.innerHTML = micIconHTML;
     searchInput.placeholder = "Search products";
 
-    // Trigger search
+    // Trigger form submission
     const searchEvent = new Event("submit", { bubbles: true });
     document.querySelector("form[role='search']").dispatchEvent(searchEvent);
   };
@@ -193,7 +197,7 @@ function initializeVoiceSearch() {
     console.error("Speech recognition error:", event.error);
     statusIndicator.style.backgroundColor = "transparent";
     voiceSearchBtn.classList.remove("listening");
-    voiceSearchBtn.innerHTML = "🎤";
+    voiceSearchBtn.innerHTML = micIconHTML;
     searchInput.placeholder = "Search products";
 
     if (event.error === "no-speech") {
@@ -204,12 +208,10 @@ function initializeVoiceSearch() {
   };
 
   recognition.onend = () => {
-    if (voiceSearchBtn.classList.contains("listening")) {
-      statusIndicator.style.backgroundColor = "transparent";
-      voiceSearchBtn.classList.remove("listening");
-      voiceSearchBtn.innerHTML = "🎤";
-      searchInput.placeholder = "Search products";
-    }
+    statusIndicator.style.backgroundColor = "transparent";
+    voiceSearchBtn.classList.remove("listening");
+    voiceSearchBtn.innerHTML = micIconHTML;
+    searchInput.placeholder = "Search products";
   };
 }
 
