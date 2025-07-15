@@ -93,7 +93,7 @@ h1 {
 }
 
 .btn.active {
-  background-color: #577b8d;
+  background-color: #222831;
   color: white;
 }
 .btn.btn-primary:hover {
@@ -105,9 +105,9 @@ h1 {
 }
 .btn.btn-primary.addToCartButton {
   width: 8em;
-  background-color: #577b8d;
+  background-color: #222831;
   color: white;
-  border-color: #577b8d;
+  border-color: #222831;
 }
 .btn.btn-primary.addToCartButton:hover {
   background-color: #d8efd3;

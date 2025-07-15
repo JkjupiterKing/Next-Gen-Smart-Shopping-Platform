@@ -17,22 +17,13 @@ export async function includeHeader(path) {
 }
 
 function attachEventListeners() {
-  // Main navigation events
-  const homeButton = document.getElementById("homeButton");
-  if (homeButton) {
-    homeButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.location.href = "../../index.html";
-    });
-  }
-
   // User profile display
   const userProfileLink = document.getElementById("userprofile");
   const username = localStorage.getItem("username");
   if (userProfileLink && username) {
     userProfileLink.innerHTML = `
-      <img src="/resources/image/profile.png" alt="user-icon" style="width: 2em; margin-left: 0.5em" />
-      <b style="margin-left: 0.5em">${username}</b>
+      <img src="/resources/image/profile.png" alt="user-icon" style="width: 1.5em;" />
+      <b>${username}</b>
     `;
   }
 
@@ -49,6 +40,31 @@ function attachEventListeners() {
           searchQuery
         )}`;
       }
+    });
+  }
+  // Sidebar toggle logic
+  const sidebar = document.getElementById("sidebarContainer");
+  const hamburger = document.getElementById("hamburgerToggle");
+  const closeBtn = document.getElementById("closeSidebarBtn");
+
+  if (hamburger && sidebar && closeBtn) {
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.add("show");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+    });
+  }
+
+  // Sidebar logout handling
+  const logoutBtn = document.getElementById("logoutSidebarBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("userDetails");
+      localStorage.removeItem("username");
+      window.location.href = "/app/components/Login/login.html";
     });
   }
 

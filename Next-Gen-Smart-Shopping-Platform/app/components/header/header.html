@@ -33,13 +33,59 @@
       .autocomplete-active {
         background-color: #e9e9e9;
       }
+      .sidemenu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        background-color: #222831;
+        padding-top: 1em;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1200;
+        display: flex;
+        flex-direction: column;
+        color: white;
+      }
+
+      .sidemenu.show {
+        transform: translateX(0);
+      }
+
+      .sidemenu button#closeSidebarBtn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8em;
+        padding: 0.5em 1em;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .sidemenu a {
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+      }
+
+      .sidemenu a img {
+        width: 1.5em;
+        margin-right: 0.8em;
+      }
+
+      .sidemenu a:hover {
+        background-color: #444;
+      }
     </style>
   </head>
   <body>
     <header>
       <nav
         class="navbar navbar-expand-lg navbar"
-        style="background-color: #4b5d67; color: white"
+        style="background-color: #222831; color: white"
       >
         <div class="container-fluid">
           <button
@@ -55,24 +101,20 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <a
-              id="homeButton"
-              class="navbar-brand text-light"
-              href="/app/index.html"
-              style="margin-right: 2em"
+            <!-- Hamburger Icon -->
+            <button
+              id="hamburgerToggle"
+              class="btn text-white"
+              style="font-size: 1.5em; background: none; border: none"
+              aria-label="Toggle sidebar"
             >
-              <img
-                src="/resources/image/online-shopping.png"
-                alt="icon"
-                style="width: 3em; margin-bottom: 1em"
-              />
-              <b style="font-size: 1em; margin-left: 0.5em">Smart-Shopping</b>
-            </a>
+              <i class="fas fa-bars"></i>
+            </button>
             <form
               autocomplete="off"
               class="d-flex"
               role="search"
-              style="width: 25em; height: 3em"
+              style="width: 40em; height: 3em; margin-left: 15em"
             >
               <div
                 class="autocomplete"
@@ -111,7 +153,7 @@
                 aria-label="Voice Search"
                 style="
                   width: 2em;
-                  background-color: #4b5d67;
+                  background-color: #222831;
                   border: none;
                   margin-left: 1em;
                   margin-bottom: 0.4em;
@@ -125,73 +167,31 @@
               </button>
             </form>
           </div>
-
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul
-              class="navbar-nav me-auto mb-2 mb-lg-0"
-              style="margin-left: 0; font-size: 1em"
-            >
-              <li class="nav-item" style="margin-left: 0.5em">
-                <a
-                  id="CartButton"
-                  class="nav-link text-light"
-                  href="/app/components/MyOrders/MyOrders.html"
-                >
-                  <img
-                    src="/resources/image/order.png"
-                    alt="Myorders-icon"
-                    style="width: 1.5em; margin-left: 2em"
-                  />
-                  <b>My Orders</b>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a
-                  id="cartButton"
-                  class="nav-link text-light"
-                  href="/app/components/cart/cart.html"
-                >
-                  <img
-                    src="/resources/image/shopping-cart.png"
-                    alt="cart-icon"
-                    style="width: 1.5em; margin-left: 0.5em"
-                  />
-                  <b>Cart</b>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  id="userprofile"
-                  class="nav-link text-light"
-                  href="/app/components/userProfile/userProfile.html"
-                >
-                  <img
-                    src="/resources/image/profile.png"
-                    alt="profile-icon"
-                    style="width: 1.5em; margin-left: 0.5em"
-                  />
-                  <b>Profile</b>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  id="logoutButton"
-                  class="nav-link text-light"
-                  href="/app/components/Login/login.html"
-                >
-                  <img
-                    src="/resources/image/logout.png"
-                    alt="Logout-icon"
-                    style="width: 1.5em; margin-left: 0.5em"
-                  />
-                  <b>Logout</b>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </nav>
+      <!-- ✅ SIDENAV HERE -->
+      <div id="sidebarContainer" class="sidemenu">
+        <button id="closeSidebarBtn" aria-label="Close Sidebar">&times;</button>
+        <a href="/app/index.html">
+          <img src="/resources/image/online-shopping.png" alt="Home" />
+          <span>Smart Shopping</span>
+        </a>
+        <a href="/app/components/MyOrders/MyOrders.html">
+          <img src="/resources/image/order.png" alt="My Orders" />
+          <span>My Orders</span>
+        </a>
+        <a href="/app/components/cart/cart.html">
+          <img src="/resources/image/shopping-cart.png" alt="Cart" />
+          <span>Cart</span>
+        </a>
+        <a href="/app/components/userProfile/userProfile.html">
+          <span id="userprofile">Profile</span>
+        </a>
+        <a href="#" id="logoutSidebarBtn">
+          <img src="/resources/image/logout.png" alt="Logout" />
+          <span>Logout</span>
+        </a>
+      </div>
     </header>
     <script src="../header/header.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
