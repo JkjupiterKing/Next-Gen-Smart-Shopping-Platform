@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../../resources/fonts/Rubik-Regular.ttf") format("truetype");
+}
+body {
+  background-image: url(../../resources/Images/login-background.jpg);
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Rubik", sans-serif;
+}
+header {
+  font-family: "Rubik", sans-serif;
+  background-color: transparent;
+  margin-left: 5em;
+  padding: 10px 20px;
+  display: flex;
+  opacity: 80%;
+  align-items: left;
+  justify-content: left;
+}
+
+header h1 {
+  margin-top: 0.8em;
+  font-size: 2em;
+  font-weight: bold;
+  color: black; /* Dark gray color */
+  margin-left: 1em; /* Adjust margin between image and text */
+}
+
+header img {
+  background-color: transparent;
+  height: 13em;
+  width: 13em;
+}
+header {
+  position: relative;
+  padding: 20px;
+}
+
+.header-buttons {
+  font-family: "Rubik", sans-serif;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.header-buttons .btn {
+  margin: 0;
+}
+
+.login-form {
+  font-family: "Rubik", sans-serif;
+  opacity: 70%;
+  width: 30em;
+  margin: 7em auto;
+  font-size: 15px;
+}
+.login-form form {
+  margin-bottom: 15px;
+  background: white;
+  padding: 30px;
+  border-radius: 26px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 1);
+}
+.login-form h2 {
+  margin: 0 0 15px;
+  color: black;
+  font-weight: bold;
+}
+.form-control,
+.btn {
+  min-height: 1em;
+  border-radius: 1px;
+}
+.btn {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-left: 8.5em;
+  background-color: #e69db8;
+  border-color: #e69db8;
+}
+.btn:hover {
+  background-color: #007fa2;
+  border-color: black;
+  color: black;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+#register-link {
+  margin-top: 1em;
+  margin-right: 0.5em;
+}
+body {
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.logo-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+#forgot-link {
+  cursor: pointer;
+  margin-left: 8.5em;
+  position: fixed;
+}

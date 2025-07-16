@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link
+      rel="stylesheet"
+      href="/resources/bootstrap/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../Admin-login/login.css" />
+    <link
+      rel="icon"
+      href="../../resources/Images/supply-chain-management.gif"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="header-buttons">
+      <a
+        href="../Login/login.html"
+        class="btn btn-primary"
+        target="_blank"
+        >Customer Login</a
+      >
+    </div>
+    <header>
+      <img
+        src="/resources/image/online-shopping.png"
+        alt="Supply Chain Management System Logo"
+      />
+      <h1>
+        Next <br />Gen <br />Smart-Shopping <br />
+        Platform
+      </h1>
+    </header>
+    <div class="login-form" id="login-form">
+      <form>
+        <h2 class="text-center">Login</h2>
+        <br />
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            required="required"
+            id="username"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            required="required"
+            id="password"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </div>
+        <br />
+        <a
+          class="forgot-password-link"
+          data-toggle="modal"
+          data-target="#forgotPasswordModal"
+          id="forgot-link"
+          >Forgot Password?</a
+        >
+        <br />
+        <div class="text-center" id="register-link">
+          <p>
+            Don't have an account?
+            <a href="../Admin-Register/Register.html">Register here</a>
+          </p>
+        </div>
+      </form>
+    </div>
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm">
+                        <div class="form-group">
+                            <label for="forgotUsername">Enter your Username</label>
+                            <input type="text" class="form-control" id="Username" name="forgotUsername" required>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="newPassword">Enter your new password</label>
+                            <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-dark btn-block" id="reset-btn">Reset Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <script src="login.js"></script>
+    <script src="/resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
