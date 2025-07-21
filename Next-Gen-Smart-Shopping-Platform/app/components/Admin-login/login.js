@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data && data.password) {
               var decodedPassword = atob(data.password);
               if (decodedPassword === password) {
-                window.location.href = "../../app/dashboard/dashboard.html";
+                window.location.href =
+                  "/app/components/customer-orders/customer-orders.html";
               } else {
                 alert("Invalid username or password.");
               }
