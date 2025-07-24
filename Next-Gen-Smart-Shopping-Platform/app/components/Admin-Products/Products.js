@@ -172,6 +172,15 @@ function addProduct(event) {
   // Declare formData at the beginning of the function
   const formData = new FormData(); // <--- This declaration should now prevent the ReferenceError
 
+  // Debug: Print all variables used in required fields check
+  console.log("Validation check:", {
+    title,
+    description,
+    category,
+    price,
+    rating,
+    imageFile,
+  });
   // Basic validation - ensure all required fields, including the image, are filled
   if (!title || !description || !category || !price || !rating || !imageFile) {
     alert("Please fill in all required fields.");
@@ -408,7 +417,7 @@ function showAddProductForm() {
   document.getElementById("addProductForm").style.display = "block";
   document.getElementById("manage-btn").style.display = "block"; // Show manage button when in add form view
   document.getElementById("searchInput").style.display = "none";
-  document.getElementById("title").style.display = "none"; // Hide "Products" heading
+  document.getElementById("title").style.display = "block"; // Hide "Products" heading
   document.getElementById("add-btn").style.display = "none"; // Hide add button when already in add form view
   document.getElementById("pagination").style.display = "none";
 }
