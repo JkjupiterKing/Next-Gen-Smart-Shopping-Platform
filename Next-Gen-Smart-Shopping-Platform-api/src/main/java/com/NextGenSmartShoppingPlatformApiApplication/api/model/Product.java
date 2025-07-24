@@ -3,10 +3,8 @@ package com.NextGenSmartShoppingPlatformApiApplication.api.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -19,15 +17,13 @@ public class Product {
     private Long id;
 
     private String title;
-
     private double price;
-
     private String description;
-
     private String category;
 
-    private String ImageURL;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
     private String rating;
 }
-

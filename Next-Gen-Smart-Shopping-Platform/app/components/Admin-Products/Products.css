@@ -182,3 +182,13 @@ header img {
   height: auto;
   width: 3em;
 }
+#submitProduct {
+  background-color: #333446;
+  color: white;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+#submitProduct:hover {
+  background-color: #495057;
+  color: white;
+}

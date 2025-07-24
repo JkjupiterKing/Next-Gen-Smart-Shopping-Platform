@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("An error occurred. Please try again.");
+        alert("Check your passsword or email. Please try again.");
       });
   });
 
