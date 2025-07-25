@@ -44,29 +44,35 @@ document.addEventListener("DOMContentLoaded", function () {
       const itemName = item.title || "Unnamed Product";
       const itemDescription = item.description || "No description available";
       const itemPrice = item.price !== undefined ? item.price : 0;
-      totalPrice += itemPrice; // Calculate total price
+      totalPrice += itemPrice;
+
       const itemRating =
         item.rating !== undefined
           ? `Rating: ${item.rating}`
           : "Rating not available";
-      const itemImage = item.image || "placeholder.jpg";
+
+      // ✅ Convert Base64 image string into image src
+      const itemImage = item.image
+        ? `data:image/jpeg;base64,${item.image}`
+        : "placeholder.jpg"; // You can replace this with your own placeholder image path
+
       const cartItemHTML = `
-        <div class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="${itemImage}" class="card-img" alt="${itemName}">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">${itemName}</h5>
-                <p class="card-text">${itemDescription}</p>
-                <p class="card-text1">Price: ${itemPrice}</p>
-                <button class="btn btn-danger remove-from-cart" data-product-id="${item.id}">Remove from Cart</button>
-              </div>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="${itemImage}" class="card-img" alt="${itemName}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">${itemName}</h5>
+              <p class="card-text">${itemDescription}</p>
+              <p class="card-text1">Price: ${itemPrice}</p>
+              <button class="btn btn-danger remove-from-cart" data-product-id="${item.id}">Remove from Cart</button>
             </div>
           </div>
         </div>
-      `;
+      </div>
+    `;
       cartItemsContainer.innerHTML += cartItemHTML;
     });
 
