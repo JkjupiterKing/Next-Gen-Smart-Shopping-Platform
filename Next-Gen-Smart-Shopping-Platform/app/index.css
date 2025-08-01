@@ -44,92 +44,6 @@ body {
   background-color: white;
 }
 
-.container-1,
-.container-2 {
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  gap: 1.5em; /* Space between cards */
-  padding-bottom: 1.5em; /* Space below the cards */
-  overflow: hidden; /* Disables horizontal scrolling */
-  position: relative; /* For positioning buttons */
-}
-
-.card {
-  display: inline-block;
-  width: 13em;
-  height: 20em;
-  margin: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  flex-shrink: 0; /* Prevents shrinking */
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-}
-
-.block-2 {
-  background-color: white;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding-bottom: 1em;
-  width: calc(100% - 2em); /* Adjust width based on margins */
-  position: relative; /* To position the buttons inside */
-}
-
-.block-2 h2 {
-  padding-top: 1em;
-  margin-left: 1.5em;
-  font-size: 1.5em;
-}
-
-.btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-#btnLeftContainer1,
-#btnRightContainer1,
-#btnLeftContainer2,
-#btnRightContainer2 {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  font-size: 2em;
-  padding: 10px;
-  background-color: rgba(0, 123, 255, 0.8);
-  color: white;
-  border-radius: 50%;
-}
-
-#btnLeftContainer1 {
-  left: 10px;
-}
-
-#btnRightContainer1 {
-  right: 10px;
-}
-
-#btnLeftContainer2 {
-  left: 10px;
-}
-
-#btnRightContainer2 {
-  right: 10px;
-}
-
 /* Ensure responsiveness for small screens */
 @media (max-width: 768px) {
   .block-1 {
@@ -163,4 +77,107 @@ body {
     font-size: 1.5em;
     padding: 8px;
   }
+}
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+.card-title {
+  font-size: 1rem;
+  min-height: 3em;
+}
+
+/* Container for recommendation section */
+#recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Column style mimicking Bootstrap col-md-3 */
+#recommendations .col-md-3 {
+  flex: 1 1 22%; /* Four per row max */
+  max-width: 23%;
+  min-width: 250px;
+  display: flex;
+}
+
+/* Card layout */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  width: 80%;
+  height: 200px;
+  object-fit: cover;
+  margin: 1em auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.card-body {
+  flex-grow: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #11235a;
+  margin-bottom: 10px;
+}
+
+.card-text1 {
+  font-size: 0.9em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.btn.btn-primary.addToCartButton {
+  background-color: #222831;
+  border-color: #222831;
+  color: white;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+}
+
+.btn.btn-primary.addToCartButton:hover {
+  background-color: #d8efd3;
+  color: black;
+  border-color: #d8efd3;
+}
+
+/* Fallback default image */
+.card img[src*="default-image.jpg"] {
+  filter: grayscale(30%);
+  opacity: 0.8;
+}
+#description {
+  font-weight: normal;
+  font-size: 0.9em;
+  color: black;
 }

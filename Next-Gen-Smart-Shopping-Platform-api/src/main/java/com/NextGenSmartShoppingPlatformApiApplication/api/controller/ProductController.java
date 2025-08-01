@@ -7,6 +7,7 @@ import com.NextGenSmartShoppingPlatformApiApplication.api.dto.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ public class ProductController {
 
     @Autowired
     private ProductRepo productRepository;
+
 
     // Utility to convert Product to ProductResponse
     private ProductResponse convertToDto(Product product) {
@@ -96,6 +98,23 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    // Get products by category
+    @GetMapping("/category/{category}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<List<ProductResponse>> getProductsByCategory(@PathVariable String category) {
+        List<Product> products = productRepository.findByCategoryIgnoreCase(category);
+        if (products.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        List<ProductResponse> response = products.stream()
+                .map(this::convertToDto)
+                .toList();
+        return ResponseEntity.ok(response);
+    }
+
+
+
 
     // Delete a product
     @DeleteMapping("/{id}")

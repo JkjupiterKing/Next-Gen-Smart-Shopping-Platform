@@ -40,7 +40,6 @@ fetch("http://localhost:8080/products/all")
   .then((res) => res.json())
   .then((products) => {
     allProducts = products;
-    console.log(allProducts);
     if (products) {
       const urlParams = new URLSearchParams(window.location.search);
       const searchQuery = urlParams.get("query");
@@ -66,23 +65,22 @@ fetch("http://localhost:8080/products/all")
 
 // Build the product listing UI
 function buildProductPage(products) {
-  console.log("Building product page with products:", products);
   let productList = document.getElementById("row");
   productList.innerHTML = "";
 
   products.forEach((product) => {
     const imageSrc = product.image
       ? `data:image/jpeg;base64,${product.image}`
-      : "default-image.jpg"; // Optional placeholder image
+      : "default-image.jpg";
 
     const cardHTML = `
       <div class="column">
         <div class="card">
-          <img src="${imageSrc}" class="card-img-top" id="Product_Image_${product.id}">
+          <img src="${imageSrc}" class="card-img-top">
           <div class="card-body">
-            <h4 class="card-title" id="Product_name_${product.id}">${product.title}</h4>
-            <p class="card-text1" id="Product_description_${product.id}">${product.description}</p>
-            <p class="card-text" id="Product_price_${product.id}">Price: ${product.price}</p>
+            <h4 class="card-title">${product.title}</h4>
+            <p class="card-text1">${product.description}</p>
+            <p class="card-text">Price: ${product.price}</p>
             <button type="button" class="btn btn-primary addToCartButton" id="${product.id}">Add to cart</button>
           </div>
         </div>
@@ -93,31 +91,62 @@ function buildProductPage(products) {
   addAddToCartListeners();
 }
 
-// Add event listeners to all Add to Cart buttons
+// Add event listeners to all Add to Cart buttons and log interaction
 function addAddToCartListeners() {
   const addToCartButtons = document.querySelectorAll(".addToCartButton");
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+  const userId = userDetails?.id;
 
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const productId = button.id;
-
       const product = allProducts.find((p) => p.id == productId);
-      if (product) {
-        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
+      if (product) {
+        // Add to localStorage cart
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         cartItems.push({
           id: product.id,
           title: product.title,
           description: product.description,
           price: product.price,
           rating: product.rating,
-          image: product.image, // Base64 image string
+          image: product.image,
         });
-
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
         alert(`${product.title} added to cart!`);
+
+        // ✅ Log interaction to backend with all fields converted to strings
+        if (userId) {
+          fetch("http://localhost:8080/interactions/add", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+              userId: String(userId),
+              productId: String(product.id),
+              type: "CART_ADD",
+              category: product.category ? String(product.category) : "",
+              title: product.title ? String(product.title) : "",
+              price: product.price != null ? String(product.price) : "0",
+            }),
+          })
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error("Bad response from server");
+              }
+              return res.text();
+            })
+            .then((data) => console.log("Interaction logged:", data))
+            .catch((err) =>
+              console.error("❌ Failed to log interaction:", err)
+            );
+        } else {
+          console.warn("User not logged in. Skipping interaction logging.");
+        }
       } else {
-        console.error("Product not found");
+        console.error("❌ Product not found");
         alert("Product not found. Please try again.");
       }
     });
@@ -126,7 +155,6 @@ function addAddToCartListeners() {
 
 // Filter products by category
 function filterSelection(filterText, products) {
-  console.log("Filtering by: " + filterText);
   let filteredProducts = [];
 
   if (filterText === "all") {
@@ -144,7 +172,6 @@ function filterSelection(filterText, products) {
 
 // Filter products by search query
 function filterSearchResults(query, products) {
-  console.log("Filtering search results for: " + query);
   const filteredProducts = products.filter(
     (product) =>
       product.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -154,7 +181,6 @@ function filterSearchResults(query, products) {
   document.getElementById("myBtnContainer").style.display = "none";
 
   const resultMessage = document.getElementById("resultMessage");
-
   if (filteredProducts.length > 0) {
     resultMessage.innerHTML = `${filteredProducts.length} result${
       filteredProducts.length > 1 ? "s" : ""
